@@ -12,8 +12,16 @@
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
 <script>
-    const heading = React.createElement("h1",{},"Namaste Everyone");
+    const heading1 = React.createElement("h1",{
+        id:"title"
+    },"Namaste Everyone");
+    const heading2 = React.createElement("h2",{
+        id : "title"
+    },"Namaste bros");
+    const container = React.createElement("div",{
+        id:"container"
+    },[heading1,heading2]);
     const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(heading );
+    root.render(container);
 </script>
 </html>
