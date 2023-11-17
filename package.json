@@ -4,6 +4,7 @@
   "description": "This is a course",
   "main": "index.js",
   "scripts": {
+    "start": "parcel ./index.html",
     "test": "jest"
   },
   "repository": {
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/yash2324/Namaste-React#readme",
   "devDependencies": {
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "parcel": "^2.10.3",
     "process": "^0.11.10"
   },
