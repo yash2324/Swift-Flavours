@@ -1,16 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import logo from "./images/logo.png";
-const Title = () => {
-  return (
-    <a href="/">
-      <div>
-        <img src={logo} alt="logo" />
-      </div>
-    </a>
-  );
-};
+import "../index.css";
+import Title from "./components/title";
 const HeaderComponent = () => {
   return (
     <div className="header">
@@ -29,18 +20,9 @@ const HeaderComponent = () => {
 const Body = () => {
   return (
     <div className="restaurant-list">
-      <RestaurantCard restaurant={restaurantList[0]} />
-      <RestaurantCard restaurant={restaurantList[1]} />
-      <RestaurantCard restaurant={restaurantList[2]} />
-      <RestaurantCard restaurant={restaurantList[3]} />
-      <RestaurantCard restaurant={restaurantList[4]} />
-      <RestaurantCard restaurant={restaurantList[5]} />
-      <RestaurantCard restaurant={restaurantList[6]} />
-      <RestaurantCard restaurant={restaurantList[7]} />
-      <RestaurantCard restaurant={restaurantList[8]} />
-      <RestaurantCard restaurant={restaurantList[9]} />
-      <RestaurantCard restaurant={restaurantList[10]} />
-      <RestaurantCard restaurant={restaurantList[11]} />
+      {restaurantList.map((restaurant) => {
+        return <RestaurantCard key={restaurant.data.id} {...restaurant.data} />;
+      })}
     </div>
   );
 };
@@ -1861,19 +1843,27 @@ const restaurantList = [
     subtype: "basic",
   },
 ];
-const RestaurantCard = (props) => {
+const RestaurantCard = ({
+  cloudinaryImageId,
+  name,
+  cuisines,
+  area,
+  lastMileTravelString,
+  costForTwoString,
+  avgRating,
+}) => {
   return (
     <div className="card">
       <img
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          props.restaurant.data?.cloudinaryImageId
+          cloudinaryImageId
         }
         alt="image"
       />
-      <h3>{props.restaurant.data?.name}</h3>
-      <h4>{props.restaurant.data?.cuisines.join(" , ")}</h4>
-      <h4>{props.restaurant.data?.lastMileTravelString}</h4>
+      <h3>{name}</h3>
+      <h4>{cuisines.join(" , ")}</h4>
+      <h4>{lastMileTravelString}</h4>
     </div>
   );
 };
