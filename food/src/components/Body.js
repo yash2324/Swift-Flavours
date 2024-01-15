@@ -67,6 +67,17 @@ const Body = () => {
         >
           Search
         </button>
+        <button
+          className="filter-btn"
+          onClick={() => {
+            const topRestaurantData = filteredRestaurants.filter(
+              (res) => res?.info?.avgRating > 4.5
+            );
+            setFilteredRestaurants(topRestaurantData);
+          }}
+        >
+          Top Rated restaurant
+        </button>
       </div>
       <div className="restaurant-list">
         {filteredRestaurants.map((restaurant) => {
