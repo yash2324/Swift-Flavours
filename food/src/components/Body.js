@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-
+import { API_URL } from "../constants";
+import { Link } from "react-router-dom";
 function filterData(SearchText, allRestaurants) {
   const filterData = allRestaurants.filter((restaurant) =>
     restaurant.info.name.toLowerCase().includes(SearchText.toLowerCase())
@@ -17,29 +18,36 @@ const Body = () => {
     getRestaurants();
   }, []);
   async function getRestaurants() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    console.log(json);
-    async function checkJsonData(jsonData) {
-      for (let i = 0; i < jsonData?.data?.cards.length; i++) {
-        // initialize checkData for Swiggy Restaurant data
-        let checkData =
-          json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants;
+    // handle the error using try... catch
+    try {
+      const response = await fetch(API_URL);
+      const json = await response.json();
+      console.log(json);
+      // initialize checkJsonData() function to check Swiggy Restaurant data
+      async function checkJsonData(jsonData) {
+        for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+          // initialize checkData for Swiggy Restaurant data
+          let checkData =
+            // json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+            json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
+              ?.restaurants;
 
-        // if checkData is not undefined then return it
-        if (checkData !== undefined) {
-          return checkData;
+          // if checkData is not undefined then return it
+          if (checkData !== undefined) {
+            return checkData;
+          }
         }
       }
-    }
-    const resData = await checkJsonData(json);
 
-    // update the state variable restaurants with Swiggy API data
-    setAllRestaurants(resData);
-    setFilteredRestaurants(resData);
+      // call the checkJsonData() function which return Swiggy Restaurant data
+      const resData = await checkJsonData(json);
+
+      // update the state variable restaurants with Swiggy API data
+      setAllRestaurants(resData);
+      setFilteredRestaurants(resData);
+    } catch (error) {
+      console.log(error);
+    }
   }
   if (!allRestaurants) return null;
 
@@ -47,31 +55,34 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="ABC"
-          className="search-input"
-          value={SearchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
-        <button
-          className="search-btn"
-          onClick={() => {
-            const data = filterData(SearchText, allRestaurants);
+      <div className="filter-data">
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="ABC"
+            className="search-input"
+            value={SearchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
 
-            setFilteredRestaurants(data);
-          }}
-        >
-          Search
-        </button>
+          <button
+            className="search-btn"
+            onClick={() => {
+              const data = filterData(SearchText, allRestaurants);
+
+              setFilteredRestaurants(data);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
             const topRestaurantData = filteredRestaurants.filter(
-              (res) => res?.info?.avgRating > 4.5
+              (res) => res?.info?.avgRating > 4
             );
             setFilteredRestaurants(topRestaurantData);
           }}
@@ -82,7 +93,12 @@ const Body = () => {
       <div className="restaurant-list">
         {filteredRestaurants.map((restaurant) => {
           return (
-            <RestaurantCard key={restaurant?.info?.id} {...restaurant?.info} />
+            <Link
+              key={restaurant?.info?.id}
+              to={"/restaurants/" + restaurant?.info?.id}
+            >
+              <RestaurantCard {...restaurant?.info} />
+            </Link>
           );
         })}
       </div>
