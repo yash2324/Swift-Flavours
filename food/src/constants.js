@@ -1819,6 +1819,16 @@ export const restaurantList = [
 ];
 export const API_URL =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.4089123&lng=77.3177894&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+export const API_URL_NEW =
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING";
+export const API_URL_2 =
+  "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
+export const swiggy_menu_api_URL =
+  "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=";
 
 export const API_MENU =
-  "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=";
+  "https://www.swiggy.com/dapi/menu/v4/full?lat=12.9351929&lng=77.62448069999999&menuId=";
+export const MENU_ITEM_TYPE_KEY =
+  "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
+export const RESTAURANT_TYPE_KEY =
+  "type.googleapis.com/swiggy.presentation.food.v2.Restaurant";

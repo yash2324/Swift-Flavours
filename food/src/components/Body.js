@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { API_URL } from "../constants";
+import { API_URL, API_URL_2, API_URL_NEW } from "../constants";
 import { Link } from "react-router-dom";
 function filterData(SearchText, allRestaurants) {
   const filterData = allRestaurants.filter((restaurant) =>
@@ -20,15 +20,14 @@ const Body = () => {
   async function getRestaurants() {
     // handle the error using try... catch
     try {
-      const response = await fetch(API_URL);
+      const response = await fetch(API_URL_2);
       const json = await response.json();
-      console.log(json);
+
       // initialize checkJsonData() function to check Swiggy Restaurant data
       async function checkJsonData(jsonData) {
         for (let i = 0; i < jsonData?.data?.cards.length; i++) {
           // initialize checkData for Swiggy Restaurant data
           let checkData =
-            // json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
             json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
               ?.restaurants;
 
