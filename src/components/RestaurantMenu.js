@@ -56,11 +56,6 @@ const RestaurantMenu = () => {
   }
   if (restaurant === null) return <Shimmer_menu />;
 
-  // const { name, costForTwoMessage, avgRating, cuisines } =
-  //   resInfo?.cards[0]?.card?.card?.info;
-  // const { itemCards } =
-  //   resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card;
-
   return (
     <>
       <h2>This is the menu</h2>

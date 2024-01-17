@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "This is a course",
   "scripts": {
-    "start": "parcel food/main.html",
-    "build": "parcel build food/main.html",
+    "start": "parcel main.html",
+    "build": "parcel build main.html",
     "test": "jest"
   },
   "repository": {
