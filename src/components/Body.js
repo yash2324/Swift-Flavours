@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { API_URL, API_URL_2, API_URL_NEW } from "../constants";
+import { API_URL, API_URL_2, API_URL_NEW } from "../../utils/constants";
 import { Link } from "react-router-dom";
 function filterData(SearchText, allRestaurants) {
   const filterData = allRestaurants.filter((restaurant) =>

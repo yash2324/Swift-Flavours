@@ -5,10 +5,10 @@ import {
   MENU_ITEM_TYPE_KEY,
   RESTAURANT_TYPE_KEY,
   swiggy_menu_api_URL,
-} from "../constants";
+} from "../../utils/constants";
 import { useParams } from "react-router-dom";
 import Shimmer_menu from "./Shimmer_menu";
-import { IMG_CDN_URL } from "../constants";
+import { IMG_CDN_URL } from "../../utils/constants";
 const RestaurantMenu = () => {
   const [restaurant, setRestaurant] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
