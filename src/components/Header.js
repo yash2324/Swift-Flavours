@@ -14,11 +14,11 @@ const HeaderComponent = () => {
 
   return (
     <div className="flex justify-between bg-white text-slate-600 font-bold shadow-lg">
-      <a className="inline-block p-1" href="/">
+      <a className="inline-block p-1 w-40 mt-4" href="/">
         <div>
           <img
-            className="w-20 h-20 object-contain"
-            src="https://i.ibb.co/zJVCSTS/Untitled-design.png"
+            className="w-25 h-20 object-contain"
+            src="https://i.ibb.co/VqdL26h/final-logo.png"
             alt="logo"
           />
         </div>
