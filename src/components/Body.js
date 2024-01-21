@@ -66,11 +66,11 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap ml-10">
+      <div className="flex flex-wrap ml-10 justify-center">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
-              className="w-60 hover:w-64  p-2 duration-300"
+              className="w-72 hover:w-80  p-2 duration-300"
               key={restaurant?.info?.id}
               to={"/restaurants/" + restaurant?.info?.id}
             >
