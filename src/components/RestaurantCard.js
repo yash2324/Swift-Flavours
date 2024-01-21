@@ -9,9 +9,13 @@ const RestaurantCard = ({
   deliveryTime,
 }) => {
   return (
-    <div className="card">
-      <img src={IMG_CDN_URL + cloudinaryImageId} alt="image" />
-      <h3>{name}</h3>
+    <div className="m-2 border-2 p-1 rounded-md shadow-md hover:shadow-2xl text-slate-800">
+      <img
+        className="rounded-md"
+        src={IMG_CDN_URL + cloudinaryImageId}
+        alt="image"
+      />
+      <h3 className="font-bold text-black">{name}</h3>
       <h4>{cuisines.join(" , ")}</h4>
       <h4>{lastMileTravelString}</h4>
       <h4>{costForTwo}</h4>

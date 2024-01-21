@@ -30,12 +30,12 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="filter-data">
-        <div className="search-bar">
+      <div className="my-4 flex flex-col items-center justify-between">
+        <div className="ml-auto mr-auto text-center">
           <input
             type="text"
             placeholder="ABC"
-            className="search-input"
+            className="px-4 py-2 w-80 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-300"
             value={SearchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -43,7 +43,7 @@ const Body = () => {
           />
 
           <button
-            className="search-btn"
+            className=" bg-blue-500 text-white px-4 py-2 ml-2 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 transition duration-300"
             onClick={() => {
               const data = filterData(SearchText, allRestaurants);
 
@@ -53,22 +53,24 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const topRestaurantData = filteredRestaurants.filter(
-              (res) => res?.info?.avgRating > 4
-            );
-            setFilteredRestaurants(topRestaurantData);
-          }}
-        >
-          Top Rated restaurant
-        </button>
+        <div className="top-rated-btn my-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-blue-700 transition duration-300">
+          <button
+            onCick={() => {
+              const topRestaurantData = filteredRestaurants.filter(
+                (res) => res?.info?.avgRating > 4
+              );
+              setFilteredRestaurants(topRestaurantData);
+            }}
+          >
+            Top Rated restaurant
+          </button>
+        </div>
       </div>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap ml-10">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
+              className="w-60 hover:w-64  p-2 duration-300"
               key={restaurant?.info?.id}
               to={"/restaurants/" + restaurant?.info?.id}
             >
