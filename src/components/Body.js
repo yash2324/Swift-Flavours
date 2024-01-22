@@ -66,7 +66,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap ml-10 justify-center">
+      <div className="flex flex-wrap ml-10 mb-10 text-center text-pretty justify-center">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
