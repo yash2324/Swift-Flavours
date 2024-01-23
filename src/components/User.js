@@ -22,7 +22,8 @@ class UserClass extends React.Component {
     const { contact } = this.props;
     return (
       <div className="user-container">
-        <img className="ml-[405px] rounded-xl w-64 " src={avatar_url} />
+        <img className="mt-5 rounded-xl w-64 " src={avatar_url} />
+
         <h2>{name}</h2>
         <h2>{location}</h2>
         <h2>{contact}</h2>
