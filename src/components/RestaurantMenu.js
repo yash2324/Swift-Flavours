@@ -5,14 +5,22 @@ import useRestaurantData from "../../utils/useRestaurantData";
 import useMenuItems from "../../utils/useMenuItems";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../utils/cartSlice";
+import { useState } from "react";
 const RestaurantMenu = () => {
   const { resid } = useParams();
   const restaurant = useRestaurantData(resid);
   const menuItems = useMenuItems(resid);
   const dispatch = useDispatch();
+  const [addedItemId, setAddedItemId] = useState(null);
+
   const handleAddItem = (item) => {
     dispatch(addItem(item));
+    setAddedItemId(item.id);
+    setTimeout(() => {
+      setAddedItemId(null);
+    }, 1000);
   };
+
   if (menuItems.length === 0) return <Shimmer_menu />;
   return (
     <>
@@ -39,16 +47,21 @@ const RestaurantMenu = () => {
       <h2 className="text-center text-3xl font-bold underline">Menu</h2>
       <div className="text-slate-800 m-5">
         {menuItems.map((item) => (
-          <div className="flex mb-5 items-center justify-between" key={item.id}>
-            <div className="flex items-center">
+          <div
+            className={`flex mb-5 items-center justify-between transition-all duration-500 ease-in-out ${
+              addedItemId === item.id ? "bg-green-100" : ""
+            }`}
+            key={item.id}
+          >
+            <div className="flex items-center rounded-lg">
               {item?.imageId ? (
                 <img
-                  className="menu-item-img w-24 h-24 object-cover rounded mr-4"
+                  className="menu-item-img w-28 h-28 object-cover rounded-lg p-2 mr-4"
                   src={ITEM_IMG_CDN_URL + item?.imageId}
                   alt={item?.name}
                 />
               ) : (
-                <div className="menu-item-img w-24 h-24 bg-gray-200 rounded mr-4">
+                <div className="menu-item-img w-28 h-28 bg-gray-200 rounded-lg p-2 mr-4">
                   <p className="text-center mt-8">No image</p>
                 </div>
               )}
@@ -69,7 +82,7 @@ const RestaurantMenu = () => {
               </div>
             </div>
             <button
-              className="add-btn bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:shadow-outline"
+              className="add-btn mr-2 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:shadow-outline"
               onClick={() => handleAddItem(item)}
             >
               ADD +

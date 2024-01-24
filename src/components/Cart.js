@@ -67,13 +67,15 @@ const Cart = () => {
         </div>
       ) : (
         <div className="text-center mt-5">
-          <p className="text-3xl font-bold mb-2">Your cart is empty.</p>
+          <p className="text-3xl font-bold mb-2">
+            Uh-Oh!!! Seems like your cart is empty :\
+          </p>
           <p className="text-lg">
-            Explore our menu and add delicious items to your cart!
+            Explore restaurants and add some delicious items to your cart!
           </p>
           <Link
             to={"/"}
-            className="text-blue-500 hover:underline font-semibold mt-3"
+            className="text-green-800 hover:underline font-semibold mt-6 text-2xl"
           >
             Go to Home
           </Link>

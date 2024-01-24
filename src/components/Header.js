@@ -13,7 +13,6 @@ const HeaderComponent = () => {
     }
   }, [onlineStatus]);
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
   return (
     <div className="flex justify-between bg-white text-slate-600 font-bold shadow-lg">
       <a className="inline-block p-1 w-40 mt-4" href="/">

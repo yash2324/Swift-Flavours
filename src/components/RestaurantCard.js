@@ -16,7 +16,7 @@ const RestaurantCard = ({
         alt="image"
       />
       <h3 className="font-bold text-black">{name}</h3>
-      <h4>{cuisines.join(" , ")}</h4>
+      <h4>{cuisines.join(", ")}</h4>
       <h4>{lastMileTravelString}</h4>
       <h4>{costForTwo}</h4>
       <h4>{deliveryTime}</h4>
