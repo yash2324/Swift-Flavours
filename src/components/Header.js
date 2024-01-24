@@ -13,6 +13,7 @@ const HeaderComponent = () => {
     }
   }, [onlineStatus]);
   const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   return (
     <div className="flex justify-between bg-white text-slate-600 font-bold shadow-lg">
       <a className="inline-block p-1 w-40 mt-4" href="/">
@@ -35,7 +36,9 @@ const HeaderComponent = () => {
           <li className="mx-5 my-10">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="mx-5 my-10">Cart 🛒 ({cartItems.length})</li>
+          <li className="mx-5 my-10">
+            <Link to="/cart">Cart 🛒 ({cartItems.length})</Link>
+          </li>
           <li>
             <button
               className="mr-5 ml-7 py-10"

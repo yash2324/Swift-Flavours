@@ -9,11 +9,11 @@ const RestaurantMenu = () => {
   const { resid } = useParams();
   const restaurant = useRestaurantData(resid);
   const menuItems = useMenuItems(resid);
-  if (menuItems.length === 0) return <Shimmer_menu />;
   const dispatch = useDispatch();
-  const handleAddItem = () => {
-    dispatch(addItem("random"));
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
   };
+  if (menuItems.length === 0) return <Shimmer_menu />;
   return (
     <>
       <div className="flex justify-evenly bg-slate-500">
@@ -39,7 +39,7 @@ const RestaurantMenu = () => {
       <h2 className="text-center text-3xl font-bold underline">Menu</h2>
       <div className="text-slate-800 m-5">
         {menuItems.map((item) => (
-          <div className="flex mb-5 items-center justify-between">
+          <div className="flex mb-5 items-center justify-between" key={item.id}>
             <div className="flex items-center">
               {item?.imageId ? (
                 <img
@@ -63,14 +63,14 @@ const RestaurantMenu = () => {
                           style: "currency",
                           currency: "INR",
                         }).format(item?.price / 100)
-                      : " "}
+                      : "₹200.00 "}
                   </p>
                 </div>
               </div>
             </div>
             <button
               className="add-btn bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:shadow-outline"
-              onClick={handleAddItem}
+              onClick={() => handleAddItem(item)}
             >
               ADD +
             </button>
