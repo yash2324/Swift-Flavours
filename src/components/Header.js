@@ -29,12 +29,7 @@ const HeaderComponent = () => {
           <li className="mx-5 my-10">
             <Link to="/">Home</Link>
           </li>
-          <li className="mx-5 my-10">
-            <Link to="/aboutus">About Us</Link>
-          </li>
-          <li className="mx-5 my-10">
-            <Link to="/contact">Contact Us</Link>
-          </li>
+
           <li className="mx-5 my-10">
             <Link to="/cart">Cart 🛒 ({cartItems.length})</Link>
           </li>

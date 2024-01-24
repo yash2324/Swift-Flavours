@@ -18,6 +18,7 @@ const Body = () => {
   useEffect(() => {
     setFilteredRestaurants(allRestaurants);
   }, [allRestaurants]);
+
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false)
     return (
@@ -31,11 +32,28 @@ const Body = () => {
   ) : (
     <>
       <div className="my-4 flex flex-col items-center justify-between">
-        <div className="ml-auto mr-auto text-center">
+        <div className=" relative w-[30rem] ml-auto mr-auto text-center flex items-center">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg
+              class="w-4 h-4 text-gray-500 dark:text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              />
+            </svg>
+          </div>
           <input
             type="text"
-            placeholder="ABC"
-            className="px-4 py-2 w-80 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-300"
+            placeholder="Search..."
+            className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  "
             value={SearchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -43,17 +61,17 @@ const Body = () => {
           />
 
           <button
-            className=" bg-blue-500 text-white px-4 py-2 ml-2 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 transition duration-300"
+            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             onClick={() => {
               const data = filterData(SearchText, allRestaurants);
-
               setFilteredRestaurants(data);
             }}
           >
             Search
           </button>
         </div>
-        <div className="top-rated-btn my-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:shadow-outline-green active:bg-blue-700 transition duration-300">
+
+        <div className="ml-auto mr-2 top-rated-btn my-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 transition duration-300">
           <button
             onClick={() => {
               const topRestaurantData = filteredRestaurants.filter(
