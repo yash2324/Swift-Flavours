@@ -3,12 +3,17 @@ import Shimmer_menu from "./Shimmer_menu";
 import { IMG_CDN_URL, ITEM_IMG_CDN_URL } from "../../utils/constants";
 import useRestaurantData from "../../utils/useRestaurantData";
 import useMenuItems from "../../utils/useMenuItems";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../utils/cartSlice";
 const RestaurantMenu = () => {
   const { resid } = useParams();
   const restaurant = useRestaurantData(resid);
   const menuItems = useMenuItems(resid);
-  if (restaurant === null) return <Shimmer_menu />;
-
+  if (menuItems.length === 0) return <Shimmer_menu />;
+  const dispatch = useDispatch();
+  const handleAddItem = () => {
+    dispatch(addItem("random"));
+  };
   return (
     <>
       <div className="flex justify-evenly bg-slate-500">
@@ -63,7 +68,10 @@ const RestaurantMenu = () => {
                 </div>
               </div>
             </div>
-            <button className="add-btn bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:shadow-outline">
+            <button
+              className="add-btn bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:shadow-outline"
+              onClick={handleAddItem}
+            >
               ADD +
             </button>
           </div>
