@@ -8,13 +8,17 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import AboutUs from "./components/About";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { Provider } from "react-redux";
+import appStore from "../utils/appStore";
 const AppLayout = () => {
   return (
-    <>
-      <HeaderComponent />
-      <Outlet />
-      <Footer />
-    </>
+    <Provider store={appStore}>
+      <div>
+        <HeaderComponent />
+        <Outlet />
+        <Footer />
+      </div>
+    </Provider>
   );
 };
 const Contact = lazy(() => {
