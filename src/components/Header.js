@@ -47,7 +47,11 @@ const HeaderComponent = () => {
                   : setBtnName("Login " + (onlineStatus ? "🟢" : "🛑"));
               }}
             >
-              {btnName}
+              {btnName === "Login 🟢" ? (
+                <Link to="/login">{btnName}</Link>
+              ) : (
+                btnName
+              )}
             </button>
           </li>
         </ul>
