@@ -24,7 +24,7 @@ const RestaurantMenu = () => {
   if (menuItems.length === 0) return <Shimmer_menu />;
   return (
     <>
-      <div className="flex justify-evenly bg-slate-500">
+      <div className="flex  justify-evenly bg-slate-500 ">
         <img
           className="w-64 h-64 m-10 rounded-md"
           src={IMG_CDN_URL + restaurant?.cloudinaryImageId}

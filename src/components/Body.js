@@ -32,7 +32,7 @@ const Body = () => {
   ) : (
     <>
       <div className="my-4 flex flex-col items-center justify-between">
-        <div className=" relative w-[30rem] ml-auto mr-auto text-center flex items-center">
+        <div className=" relative w-1/2  ml-auto mr-auto text-center flex items-center">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
               class="w-4 h-4 text-gray-500 dark:text-gray-400"

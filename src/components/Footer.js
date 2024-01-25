@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-600 text-white p-4 mt-16">
+    <div className="bg-gray-600 text-white p-4 mt-8 md:mt-16">
       <div className="flex justify-center space-x-4">
         <a
           href="https://github.com/yash2324"
@@ -43,18 +43,36 @@ const Footer = () => {
           />
         </a>
       </div>
-      <div>
-        <ul className="flex justify-center">
-          <li className="bt2 mx-5 mt-7 px-2 py-1 w-32 text-center rounded-md mb-2 bg-gradient-to-r from-amber-500 to-pink-500  font-black text-slate-800">
-            <Link to="/aboutus">About Us</Link>
+      <div className="flex flex-col items-center md:flex-row md:justify-center">
+        <ul className="list-none flex flex-col md:flex-row items-center">
+          <li className="mt-3 p-1 md:mt-2 sm:mt-0 md:mr-5">
+            <Link
+              to="/aboutus"
+              className="text-center rounded-md mb-2 bg-black  font-black text-white"
+            >
+              About Us
+            </Link>
           </li>
-          <li className="bt1 mx-5 mt-7 px-2 py-1 w-32 text-center rounded-md mb-2 bg-gradient-to-r from-amber-500 to-pink-500  font-black text-slate-800 ">
-            <Link to="/contact">Contact Us</Link>
+          <li className="mt-3 p-1 md:mt-2 sm:mt-0">
+            <Link
+              to="/contact"
+              className="text-center rounded-md mb-2 bg-black  font-black text-white"
+            >
+              Contact Us
+            </Link>
           </li>
         </ul>
       </div>
 
-      <p className="text-center mt-4">© 2024 Yash Gupta</p>
+      <p className="text-center mt-4">
+        © 2024{" "}
+        <a
+          href="https://linkedin.com/in/yash-gupta-012769206/"
+          className="text-white hover:text-gray-400"
+        >
+          Yash Gupta
+        </a>
+      </p>
     </div>
   );
 };
