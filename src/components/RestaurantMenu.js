@@ -24,14 +24,16 @@ const RestaurantMenu = () => {
   if (menuItems.length === 0) return <Shimmer_menu />;
   return (
     <>
-      <div className="flex  justify-evenly bg-slate-500 ">
+      <div className="flex flex-col lg:flex-row justify-evenly bg-slate-500">
         <img
-          className="w-64 h-64 m-10 rounded-md"
+          className="mx-auto lg:mx-0 w-64 h-60 md:h-80 lg:w-64 lg:h-64 m-10 rounded-md"
           src={IMG_CDN_URL + restaurant?.cloudinaryImageId}
           alt={restaurant?.name}
         />
-        <div className="flex-col justify-between ">
-          <h1 className="mt-32 font-extrabold text-5xl">{restaurant?.name}</h1>
+        <div className="flex-col text-center lg:text-left justify-between ">
+          <h1 className="mt-auto lg:mx-0 lg:mt-32 font-extrabold text-5xl">
+            {restaurant?.name}
+          </h1>
 
           <h2 className="text-white text-xl">
             {"💳 " + restaurant?.costForTwoMessage}
@@ -44,8 +46,9 @@ const RestaurantMenu = () => {
           </p>
         </div>
       </div>
+
       <h2 className="text-center text-3xl font-bold underline">Menu</h2>
-      <div className="text-slate-800 m-5">
+      <div className="text-slate-800 m-5 ">
         {menuItems.map((item) => (
           <div
             className={`flex mb-5 items-center justify-between transition-all duration-500 ease-in-out ${
@@ -65,7 +68,7 @@ const RestaurantMenu = () => {
                   <p className="text-center mt-8">No image</p>
                 </div>
               )}
-              <div className="m-3 border-b-2">
+              <div className=" m-3 ">
                 <div className="menu-item-details">
                   <h3 className="item-title text-xl font-semibold mb-1">
                     {item?.name}
