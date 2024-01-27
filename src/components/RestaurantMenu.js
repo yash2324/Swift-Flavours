@@ -64,7 +64,7 @@ const RestaurantMenu = () => {
                   alt={item?.name}
                 />
               ) : (
-                <div className="menu-item-img w-28 h-28 bg-gray-200 rounded-lg p-2 mr-4">
+                <div className="menu-item-img w-28 h-28 object-cover bg-gray-200 rounded-lg p-2 mr-4">
                   <p className="text-center mt-8">No image</p>
                 </div>
               )}
