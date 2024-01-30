@@ -15,7 +15,7 @@ const HeaderComponent = () => {
   const cartItems = useSelector((store) => store.cart.items);
   return (
     <div className="flex justify-between bg-white text-slate-600 font-bold shadow-lg lg:flex lg:flex-row lg:items-center lg:justify-between">
-      <a className="inline-block p-1 w-25 mt-4" href="/">
+      <a className="inline-block p-1 w-25" href="/">
         <div>
           <img
             className="w-25 h-20 object-contain"
@@ -26,15 +26,14 @@ const HeaderComponent = () => {
       </a>
       <div className="flex items-center">
         <ul className="flex">
-          <li className="mx-2 md:mx-5 lg:mx-5 my-10">
+          <li className="mx-3 md:mx-5 lg:mx-5 my-8">
             <Link to="/">Home</Link>
           </li>
-          <li className="mx-2 md:mx-5 lg:mx-5 my-10">
+          <li className="mx-3 md:mx-5 lg:mx-5 my-8">
             <Link to="/cart">Cart 🛒 ({cartItems.length})</Link>
           </li>
-          <li>
+          <li className="ml-4 mr-5 py-8">
             <button
-              className="ml-4 mr-5 lg:ml-7 md:ml-7  py-10"
               onClick={() => {
                 btnName === "Login 🟢"
                   ? setBtnName("Logout " + (onlineStatus ? "🟢" : "🛑"))
