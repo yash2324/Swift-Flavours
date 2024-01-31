@@ -14,3 +14,6 @@
   animation: shimmer 1.5s infinite linear;
   background-size: 200% 100%;
 }
+body {
+  padding-top: 100px; /* Adjust the value according to your header's height */
+}
