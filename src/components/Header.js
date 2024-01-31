@@ -23,7 +23,7 @@ const HeaderComponent = () => {
         <a className="inline-block p-1" href="/">
           <div>
             <img
-              className="w-20 h-16 object-contain"
+              className="w-24 h-24 object-contain"
               src="https://i.ibb.co/VqdL26h/final-logo.png"
               alt="logo"
             />
